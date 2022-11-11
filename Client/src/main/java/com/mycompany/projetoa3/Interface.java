@@ -420,15 +420,13 @@ public class Interface extends javax.swing.JFrame {
     
     private void Conectar() {
         
-        String ip = inputIP.getText();
-        int IP = Integer.parseInt(ip);
-
+        String ip = inputIP.getText();   
         String porta = inputPort.getText();
         int Porta = Integer.parseInt(porta);
             
         try {
             client cliente = new client();
-            cliente.comunicarComServidor(IP, Porta);
+            cliente.comunicarComServidor(ip, Porta);
         } catch(Exception e){
             e.printStackTrace();
         }

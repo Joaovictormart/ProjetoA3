@@ -10,10 +10,11 @@ import java.util.Scanner;
 public class client {
     Socket socket;
 
-    public void comunicarComServidor(int ip, int porta) throws Exception {
+    public void comunicarComServidor(String ip, int porta) throws Exception {
         String textoRequisicao = "Conexao estabelecida";
         String textoRecebido = "";
-        socket = new Socket("ip", porta);
+        
+        socket = new Socket(ip, porta);
 
         Scanner input = new Scanner(System.in);
         System.out.print("\nDigite a sua mensagem: ");
