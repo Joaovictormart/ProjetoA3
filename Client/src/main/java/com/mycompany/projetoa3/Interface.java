@@ -1,11 +1,16 @@
 package com.mycompany.projetoa3;
 
+import javax.swing.JOptionPane;
+
 public class Interface extends javax.swing.JFrame {
 
     public Interface() {
         initComponents();
     }
-
+    
+    //Objetos
+    //ControleJogo controler = new ControleJogo();
+    client cliente = new client();
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -304,44 +309,53 @@ public class Interface extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    //Paineis de jogo
     private void btn7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn7ActionPerformed
-        // TODO add your handling code here:
+        char btn= 7;
+        cliente.trataDados(btn);
     }//GEN-LAST:event_btn7ActionPerformed
-
+  
     private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
-        // TODO add your handling code here:
+        char btn= 2;
+        cliente.trataDados(btn);
     }//GEN-LAST:event_btn2ActionPerformed
 
     private void btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed
-        // TODO add your handling code here:
+        char btn= 4;
+        cliente.trataDados(btn);
     }//GEN-LAST:event_btn4ActionPerformed
 
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
-        //btn1.setText("x");
-        char btn= 0;
-        AtualizaString(btn);
+        char btn= 1;
+        cliente.trataDados(btn);
     }//GEN-LAST:event_btn1ActionPerformed
 
     private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
-        // TODO add your handling code here:
+        char btn= 3;
+        cliente.trataDados(btn);
     }//GEN-LAST:event_btn3ActionPerformed
 
     private void btn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn6ActionPerformed
-        // TODO add your handling code here:
+        char btn= 6;
+        cliente.trataDados(btn);
     }//GEN-LAST:event_btn6ActionPerformed
 
     private void btn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn5ActionPerformed
-        // TODO add your handling code here:
+        char btn= 5;
+        cliente.trataDados(btn);
     }//GEN-LAST:event_btn5ActionPerformed
 
     private void btn9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn9ActionPerformed
-        // TODO add your handling code here:
+        char btn= 9;
+        cliente.trataDados(btn);
     }//GEN-LAST:event_btn9ActionPerformed
 
     private void btn8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn8ActionPerformed
-        // TODO add your handling code here:
+        char btn= 8;
+        cliente.trataDados(btn);
     }//GEN-LAST:event_btn8ActionPerformed
 
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -420,7 +434,6 @@ public class Interface extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     
-    private String strJogo= "123456789";
     
     private void Conectar() {
         
@@ -429,20 +442,36 @@ public class Interface extends javax.swing.JFrame {
         int Porta = Integer.parseInt(porta);
             
         try {
-            client cliente = new client();
             cliente.comunicarComServidor(ip, Porta);
         } catch(Exception e){
             e.printStackTrace();
         }
     } 
     
-    private void AtualizaString(char newBtn) {
-        
-        //atualiza painel
-        char[] charJogo = strJogo.toCharArray();
-        charJogo[newBtn] = 'X';
-        strJogo = String.valueOf(charJogo);
-        System.out.println(strJogo);
+    //Função para alterar painel de jogador
+    public void alteraPainel(char newBtn){
+        switch(newBtn){
+            case 1:
+                btn1.setText("x");
+            break; case 2:
+                btn2.setText("X");
+            break; case 3:
+                btn3.setText("X");
+            break; case 4:
+                btn4.setText("X");
+            break; case 5:
+                btn5.setText("X");
+            break; case 6:
+                btn6.setText("X");
+            break; case 7:
+                btn7.setText("X");
+            break; case 8:
+                btn8.setText("X");
+            break; case 9:
+                btn9.setText("X");
+            break; default: 
+                JOptionPane.showMessageDialog(null,"Como que você fez isso?? Valor inválido");  
+        }
     }
-        
+    
 }

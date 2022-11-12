@@ -29,7 +29,11 @@ public class client {
         System.out.println("Servidor enviou: " + textoRecebido);
     }
 
-
+    public void trataDados(char btn){
+        ControleJogo controler = new ControleJogo();
+        controler.AtualizaString(btn);
+    }
+    
     public static void main(String[] args) {
         
         Interface objInterface = new Interface();
