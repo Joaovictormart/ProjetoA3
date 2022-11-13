@@ -219,6 +219,7 @@ public class Interface extends javax.swing.JFrame {
         });
 
         btnConectar.setText("Conectar");
+        btnConectar.setToolTipText("");
         btnConectar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnConectarActionPerformed(evt);
@@ -327,9 +328,14 @@ public class Interface extends javax.swing.JFrame {
 
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
         char btn= 1;
+        //btn1.setText("X");
         cliente.trataDados(btn);
     }//GEN-LAST:event_btn1ActionPerformed
-
+    public void setBtn1(javax.swing.JButton btn1) {
+        this.btn1.setText("X");
+        System.out.print("dentro do set");
+    }
+    
     private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
         char btn= 3;
         cliente.trataDados(btn);
@@ -449,29 +455,40 @@ public class Interface extends javax.swing.JFrame {
     } 
     
     //Função para alterar painel de jogador
-    public void alteraPainel(char newBtn){
-        switch(newBtn){
-            case 1:
-                btn1.setText("x");
-            break; case 2:
-                btn2.setText("X");
-            break; case 3:
-                btn3.setText("X");
-            break; case 4:
-                btn4.setText("X");
-            break; case 5:
-                btn5.setText("X");
-            break; case 6:
-                btn6.setText("X");
-            break; case 7:
-                btn7.setText("X");
-            break; case 8:
-                btn8.setText("X");
-            break; case 9:
-                btn9.setText("X");
-            break; default: 
-                JOptionPane.showMessageDialog(null,"Como que você fez isso?? Valor inválido");  
+    public void alteraPainel(char[] charJogo, String marcador){
+        
+        if(charJogo[1] != '-'){
+            this.btn1.setText("X");
+            System.out.println("Chegou aqui");
+            //setBtn1(btn1);  
+        } else {
+            System.out.println("Tecla errada Fi");
         }
+        
+//        switch(newBtn){
+//            case 1:
+//                btn1.setText("x");
+//            break; case 2:
+//                btn2.setText("X");
+//            break; case 3:
+//                btn3.setText("X");
+//            break; case 4:
+//                btn4.setText("X");
+//            break; case 5:
+//                btn5.setText("X");
+//            break; case 6:
+//                btn6.setText("X");
+//            break; case 7:
+//                btn7.setText("X");
+//            break; case 8:
+//                btn8.setText("X");
+//            break; case 9:
+//                btn9.setText("X");
+//            break; default: 
+//                JOptionPane.showMessageDialog(null,"Como que você fez isso?? Valor inválido");  
+//        }
     }
+
+
     
 }
