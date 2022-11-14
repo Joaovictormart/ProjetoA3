@@ -331,8 +331,11 @@ public class Interface extends javax.swing.JFrame {
         //btn1.setText("X");
         cliente.trataDados(btn);
     }//GEN-LAST:event_btn1ActionPerformed
+    public javax.swing.JButton getBtn1() {
+        return btn1;
+    }
     public void setBtn1(javax.swing.JButton btn1) {
-        this.btn1.setText("X");
+        getBtn1().setText("X");
         System.out.print("dentro do set");
     }
     
@@ -458,9 +461,9 @@ public class Interface extends javax.swing.JFrame {
     public void alteraPainel(char[] charJogo, String marcador){
         
         if(charJogo[1] != '-'){
-            this.btn1.setText("X");
+            //this.getBtn1().setText("X");
             System.out.println("Chegou aqui");
-            //setBtn1(btn1);  
+            setBtn1(getBtn1());  
         } else {
             System.out.println("Tecla errada Fi");
         }
@@ -488,6 +491,8 @@ public class Interface extends javax.swing.JFrame {
 //                JOptionPane.showMessageDialog(null,"Como que você fez isso?? Valor inválido");  
 //        }
     }
+
+
 
 
     
