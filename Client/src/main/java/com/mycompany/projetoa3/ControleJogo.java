@@ -6,7 +6,7 @@ public class ControleJogo {
     
 //Variáveis de Controle
                           // 0123456789
-    private String strJogo= "-CCCCCCCC-";
+    private String strJogo= "----------";
     private char[] charJogo = strJogo.toCharArray();
     public char[] getCharJogo() {
         return charJogo;
@@ -23,7 +23,10 @@ public class ControleJogo {
     public String getMarcadorServer() {
         return marcadorServer;
     }
-   
+    
+    private String nickClient;
+    private String nickServer;
+    
 //    Objetos
     
     
