@@ -34,7 +34,6 @@ public class client {
         controler.AtualizaString(btn);
     }
     
-    
     public static void main(String[] args) {
         
         Interface objInterface = new Interface();

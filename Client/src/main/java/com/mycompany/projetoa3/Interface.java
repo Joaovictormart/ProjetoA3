@@ -9,14 +9,9 @@ public class Interface extends javax.swing.JFrame {
     }
     
     //Objetos
-    ControleJogo controler = new ControleJogo();
+    //ControleJogo controler = new ControleJogo();
     client cliente = new client();
-    
-    //Variáveis de controle
-    private String marcadorClient = controler.getMarcadorClient();
-    private String marcadorServer = controler.getMarcadorServer();
-    private char[] charJogo = controler.getCharJogo();
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -41,15 +36,12 @@ public class Interface extends javax.swing.JFrame {
         jSeparator2 = new javax.swing.JSeparator();
         jLabel5 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        Out = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        btnConectar = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         inputIP = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         inputPort = new javax.swing.JTextField();
-        btnConectar = new javax.swing.JButton();
-        Atualizar = new javax.swing.JButton();
-        inputPort1 = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -130,7 +122,7 @@ public class Interface extends javax.swing.JFrame {
                         .addComponent(btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(btn4, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -158,7 +150,7 @@ public class Interface extends javax.swing.JFrame {
                     .addComponent(btn8, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn9, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btn7, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         jPanel2.setBackground(new java.awt.Color(51, 102, 255));
@@ -199,12 +191,12 @@ public class Interface extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
+                .addContainerGap()
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -213,20 +205,26 @@ public class Interface extends javax.swing.JFrame {
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         jPanel3.setBackground(new java.awt.Color(51, 102, 255));
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Controle do Jogo", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 1, 14), new java.awt.Color(255, 255, 255))); // NOI18N
 
-        Out.setText("Sair da Partida");
-        Out.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setText("Sair da Partida");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                OutActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        btnConectar.setText("Conectar");
+        btnConectar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConectarActionPerformed(evt);
+            }
+        });
+
         jLabel6.setText("IP");
 
         inputIP.addActionListener(new java.awt.event.ActionListener() {
@@ -235,26 +233,7 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setForeground(new java.awt.Color(242, 242, 242));
         jLabel7.setText("Porta");
-
-        btnConectar.setText("Conectar");
-        btnConectar.setToolTipText("");
-        btnConectar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnConectarActionPerformed(evt);
-            }
-        });
-
-        Atualizar.setText("Atualizar");
-        Atualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AtualizarActionPerformed(evt);
-            }
-        });
-
-        jLabel8.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel8.setText("Nick");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -263,52 +242,34 @@ public class Interface extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addComponent(btnConectar, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(inputIP, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(inputPort, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(103, 103, 103)
-                                .addComponent(jLabel7)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(inputIP, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
+                        .addGap(53, 53, 53)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(inputPort1, javax.swing.GroupLayout.DEFAULT_SIZE, 78, Short.MAX_VALUE))
-                        .addGap(6, 6, 6))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(Atualizar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Out, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnConectar)
-                .addContainerGap())
+                            .addComponent(inputPort, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8))
+                    .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(inputIP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(inputPort, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(inputPort1, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                    .addComponent(inputPort, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
                 .addComponent(btnConectar)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Atualizar)
-                    .addComponent(Out))
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -317,21 +278,21 @@ public class Interface extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -351,89 +312,53 @@ public class Interface extends javax.swing.JFrame {
     //Paineis de jogo
     private void btn7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn7ActionPerformed
         char btn= 7;
-        if(controler.AtualizaString(btn) == true){
-            btn7.setText(marcadorClient);
-        }else{
-            JOptionPane.showMessageDialog(null,"Este campo já está preenchido");
-        }
+        cliente.trataDados(btn);
     }//GEN-LAST:event_btn7ActionPerformed
   
     private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
         char btn= 2;
-        if(controler.AtualizaString(btn) == true){
-            btn2.setText(marcadorClient);
-        }else{
-            JOptionPane.showMessageDialog(null,"Este campo já está preenchido");
-        }
+        cliente.trataDados(btn);
     }//GEN-LAST:event_btn2ActionPerformed
 
     private void btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed
         char btn= 4;
-        if(controler.AtualizaString(btn) == true){
-            btn4.setText(marcadorClient);
-        }else{
-            JOptionPane.showMessageDialog(null,"Este campo já está preenchido");
-        }
+        cliente.trataDados(btn);
     }//GEN-LAST:event_btn4ActionPerformed
 
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
         char btn= 1;
-        if(controler.AtualizaString(btn) == true){
-            btn1.setText(marcadorClient);
-        }else{
-            JOptionPane.showMessageDialog(null,"Este campo já está preenchido");
-        }
+        cliente.trataDados(btn);
     }//GEN-LAST:event_btn1ActionPerformed
 
     private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
         char btn= 3;
-        if(controler.AtualizaString(btn) == true){
-            btn3.setText(marcadorClient);
-        }else{
-            JOptionPane.showMessageDialog(null,"Este campo já está preenchido");
-        }
+        cliente.trataDados(btn);
     }//GEN-LAST:event_btn3ActionPerformed
 
     private void btn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn6ActionPerformed
         char btn= 6;
-        if(controler.AtualizaString(btn) == true){
-            btn6.setText(marcadorClient);
-        }else{
-            JOptionPane.showMessageDialog(null,"Este campo já está preenchido");
-        }
+        cliente.trataDados(btn);
     }//GEN-LAST:event_btn6ActionPerformed
 
     private void btn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn5ActionPerformed
         char btn= 5;
-        if(controler.AtualizaString(btn) == true){
-            btn5.setText(marcadorClient);
-        }else{
-            JOptionPane.showMessageDialog(null,"Este campo já está preenchido");
-        }
+        cliente.trataDados(btn);
     }//GEN-LAST:event_btn5ActionPerformed
 
     private void btn9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn9ActionPerformed
         char btn= 9;
-        if(controler.AtualizaString(btn) == true){
-            btn9.setText(marcadorClient);
-        }else{
-            JOptionPane.showMessageDialog(null,"Este campo já está preenchido");
-        }
+        cliente.trataDados(btn);
     }//GEN-LAST:event_btn9ActionPerformed
 
     private void btn8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn8ActionPerformed
         char btn= 8;
-        if(controler.AtualizaString(btn) == true){
-            btn8.setText(marcadorClient);
-        }else{
-            JOptionPane.showMessageDialog(null,"Este campo já está preenchido");
-        }
+        cliente.trataDados(btn);
     }//GEN-LAST:event_btn8ActionPerformed
 
     
-    private void OutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OutActionPerformed
-        
-    }//GEN-LAST:event_OutActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnConectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConectarActionPerformed
         Conectar();
@@ -442,29 +367,6 @@ public class Interface extends javax.swing.JFrame {
     private void inputIPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputIPActionPerformed
        
     }//GEN-LAST:event_inputIPActionPerformed
-
-    private void AtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtualizarActionPerformed
-        //Atualiza o painel do jogador 
-        //PS atualiza apenas um de cada vez
-        if(charJogo[1]=='C'){btn1.setText(marcadorClient);}
-        else if(charJogo[1]=='S'){btn1.setText(marcadorServer);}
-        else if(charJogo[2]=='C'){btn2.setText(marcadorClient);}
-        else if(charJogo[2]=='S'){btn2.setText(marcadorServer);}
-        else if(charJogo[3]=='C'){btn3.setText(marcadorClient);}
-        else if(charJogo[3]=='S'){btn3.setText(marcadorServer);}
-        else if(charJogo[4]=='C'){btn4.setText(marcadorClient);}
-        else if(charJogo[4]=='S'){btn4.setText(marcadorServer);}
-        else if(charJogo[5]=='C'){btn5.setText(marcadorClient);}
-        else if(charJogo[5]=='S'){btn5.setText(marcadorServer);}
-        else if(charJogo[6]=='C'){btn6.setText(marcadorClient);}
-        else if(charJogo[6]=='S'){btn6.setText(marcadorServer);}
-        else if(charJogo[7]=='C'){btn7.setText(marcadorClient);}
-        else if(charJogo[7]=='S'){btn7.setText(marcadorServer);}
-        else if(charJogo[8]=='C'){btn8.setText(marcadorClient);}
-        else if(charJogo[8]=='S'){btn8.setText(marcadorServer);}
-        else if(charJogo[9]=='C'){btn9.setText(marcadorClient);}
-        else if(charJogo[9]=='S'){btn9.setText(marcadorServer);}
-    }//GEN-LAST:event_AtualizarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -503,10 +405,8 @@ public class Interface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Atualizar;
-    private javax.swing.JButton Out;
-    public javax.swing.JButton btn1;
-    public javax.swing.JButton btn2;
+    private javax.swing.JButton btn1;
+    private javax.swing.JButton btn2;
     private javax.swing.JButton btn3;
     private javax.swing.JButton btn4;
     private javax.swing.JButton btn5;
@@ -517,7 +417,7 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JButton btnConectar;
     private javax.swing.JTextField inputIP;
     private javax.swing.JTextField inputPort;
-    private javax.swing.JTextField inputPort1;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -525,7 +425,6 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -549,51 +448,30 @@ public class Interface extends javax.swing.JFrame {
         }
     } 
     
-//    java.awt.event.ActionEvent evt;
-//    public void actionPerformed(java.awt.event.ActionEvent evt) {
-//        btn2Action(evt);
-//    }
-//    private void btn2Action(java.awt.event.ActionEvent evt){
-//        btn2.setText("X");
-//    }
-    
     //Função para alterar painel de jogador
-    public void alteraPainel(char[] charJogo, String marcadorClient){
-        
-        if(charJogo[1] != '-'){
-            System.out.println("Chegou aqui");
-            //actionPerformed(evt);
-            //setBtn1(getBtn1());
-            btn1.setText("X");
-            
-        } else {
-            System.out.println("Tecla errada Fi");
+    public void alteraPainel(char newBtn){
+        switch(newBtn){
+            case 1:
+                btn1.setText("x");
+            break; case 2:
+                btn2.setText("X");
+            break; case 3:
+                btn3.setText("X");
+            break; case 4:
+                btn4.setText("X");
+            break; case 5:
+                btn5.setText("X");
+            break; case 6:
+                btn6.setText("X");
+            break; case 7:
+                btn7.setText("X");
+            break; case 8:
+                btn8.setText("X");
+            break; case 9:
+                btn9.setText("X");
+            break; default: 
+                JOptionPane.showMessageDialog(null,"Como que você fez isso?? Valor inválido");  
         }
-        
-        
-//        switch(newBtn){
-//            case 1:
-//                btn1.setText("x");
-//            break; case 2:
-//                btn2.setText("X");
-//            break; case 3:
-//                btn3.setText("X");
-//            break; case 4:
-//                btn4.setText("X");
-//            break; case 5:
-//                btn5.setText("X");
-//            break; case 6:
-//                btn6.setText("X");
-//            break; case 7:
-//                btn7.setText("X");
-//            break; case 8:
-//                btn8.setText("X");
-//            break; case 9:
-//                btn9.setText("X");
-//            break; default: 
-//                JOptionPane.showMessageDialog(null,"Como que você fez isso?? Valor inválido");  
-//        }
     }
-
     
 }
