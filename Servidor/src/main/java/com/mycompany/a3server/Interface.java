@@ -317,7 +317,7 @@ public class Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
+       jButton5.setText("Xuxu");
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
@@ -419,7 +419,10 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables
 
-    
+    public void xuxu2(){
+        System.out.println("xuxu");
+        jButton5.doClick();  
+    }
    
     
 }
