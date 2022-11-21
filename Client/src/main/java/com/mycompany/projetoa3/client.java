@@ -18,14 +18,13 @@ public class client {
     private String[] arrayString;
     
     
-    public void primeiraConexao(String nick, String marcadorClient, String ip, String porta) throws Exception{
+    public void primeiraConexao(String nickClient, String marcadorClient, String ip, String porta) throws Exception{
         Port = Integer.parseInt(porta);
         socket = new Socket(ip, Port);
         
-        controler.setNickClient(nick);
+        controler.setNickClient(nickClient);
         
-        concatStr = marcadorClient + ";";
-        concatStr.equals(nick);
+        concatStr = marcadorClient + ";" + nickClient;
         
         // Enviar mensagem para o servidor
         Conexao.enviar(socket, concatStr);

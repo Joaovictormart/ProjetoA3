@@ -434,6 +434,7 @@ public class Interface extends javax.swing.JFrame {
         if(controler.AtualizaString(btn) == true){
             btn8.setText(marcadorClient);
             desativaBotoes();
+            Jogadas();
         }else{
             JOptionPane.showMessageDialog(null,"Este campo já está preenchido");
         }
@@ -445,13 +446,14 @@ public class Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_OutActionPerformed
 
     private void btnConectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConectarActionPerformed
-
             Conectar();  
     }//GEN-LAST:event_btnConectarActionPerformed
 
     private void AtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtualizarActionPerformed
+        ativaBotoes();
+
         //Atualiza o painel do jogador 
-        //PS atualiza apenas um de cada vez
+        //Atualiza apenas um de cada vez
         char[] charJogo = controler.getCharJogo();
         
         if(charJogo[1]=='C'){btn1.setText(marcadorClient);}
@@ -553,6 +555,13 @@ public class Interface extends javax.swing.JFrame {
             e.printStackTrace();
         }
     } 
+    private void Jogadas() {      
+        try {
+            cliente.jogada(controler.getCharJogo());
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+    }
     private void desativaBotoes() {
         btn1.setEnabled(false);
         btn2.setEnabled(false);
@@ -564,7 +573,7 @@ public class Interface extends javax.swing.JFrame {
         btn8.setEnabled(false);
         btn9.setEnabled(false);
     }
-    public void ativaBotoes() {
+    private void ativaBotoes() {
         btn1.setEnabled(true);
         btn2.setEnabled(true);
         btn3.setEnabled(true);
@@ -576,10 +585,4 @@ public class Interface extends javax.swing.JFrame {
         btn9.setEnabled(true);
     }
 
-    //falta a lógica para envio das jogadas
-    
-//    private void iniciaJogada(){
-//        char[] charJogo = controler.getCharJogo();
-//        cliente.jogada(charJogo);
-//    }
 }

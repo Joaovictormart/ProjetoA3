@@ -36,10 +36,6 @@ public class ControleJogo {
         this.nickServer = nickServer;
     }
     
-    public void inicializaJogo(){
-        Interface objInterface = new Interface();
-        objInterface.ativaBotoes();
-    }
     
     public Boolean AtualizaString(char newBtn) {
         
@@ -57,6 +53,7 @@ public class ControleJogo {
             return false;
         }
     }
+    
     
     public void verificaVitoria(char[] charJogo){
         if(//VERTICAL X
