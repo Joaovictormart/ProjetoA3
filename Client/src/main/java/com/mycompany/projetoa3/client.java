@@ -16,24 +16,46 @@ public class client {
     private String concatStr;
     private String StringInicial;
     private String[] arrayString;
+    private char [] voltaCharJogo;
     
     
     public void primeiraConexao(String nickClient, String marcadorClient, String ip, String porta) throws Exception{
         Port = Integer.parseInt(porta);
         socket = new Socket(ip, Port);
         
+        Interface objInterface = new Interface();
+        
         controler.setNickClient(nickClient);
-        
-        concatStr = marcadorClient + ";" + nickClient;
-        
+    
+        concatStr = "T;" + marcadorClient + ";" + nickClient;
         // Enviar mensagem para o servidor
         Conexao.enviar(socket, concatStr);
         
         // Receber mensagem do servidor
         StringInicial = Conexao.receber(socket);
         arrayString = StringInicial.split(";");
-        controler.setMarcadorServer(arrayString[0]);
-        controler.setNickServer(arrayString[1]);
+        if(arrayString[0].equals("T")){
+            controler.setMarcadorServer(arrayString[1]);
+            controler.setNickServer(arrayString[2]);
+
+            //Libera o game para começar
+            String strJogo= "0---------";
+            controler.setCharJogo(strJogo.toCharArray());
+            
+            System.out.println(controler.getCharJogo());
+
+            System.out.println("passou por aqui ");
+            
+        }else{
+            String voltaStrJogo;
+            voltaStrJogo = Conexao.receber(socket);
+            voltaCharJogo = voltaStrJogo.toCharArray();
+            controler.setCharJogo(voltaCharJogo);
+
+            System.out.println("Servidor enviou: " + voltaStrJogo);
+        }
+        
+        
         
         //=D;gui
         System.out.println(arrayString[1]);
@@ -47,11 +69,6 @@ public class client {
         
         // Enviar mensagem para o servidor
         Conexao.enviar(socket, vaiStrJogo);
-
-        // Receber mensagem do servidor
-        voltaStrJogo = Conexao.receber(socket);
-
-        System.out.println("Servidor enviou: " + voltaStrJogo);
     }
 
     public static void main(String[] args) {

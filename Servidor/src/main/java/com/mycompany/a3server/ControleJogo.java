@@ -1,14 +1,13 @@
-package com.mycompany.projetoa3;
+package com.mycompany.a3server;
 
 import javax.swing.JOptionPane;
 
 public class ControleJogo {
     
 //Variáveis de Controle
+
     private char[] charJogo;
-    public char[] getCharJogo() {
-        return charJogo;
-    }
+
     //char[] charMarcador = getMarcadorClient().toCharArray();
     
     //lógica para mudar o icone de cada usuário
@@ -16,7 +15,7 @@ public class ControleJogo {
     public String getMarcadorClient() {
         return marcadorClient;
     }
-    private String marcadorServer;
+    private String marcadorServer = "O";
     public String getMarcadorServer() {
         return marcadorServer;
     }
@@ -26,17 +25,22 @@ public class ControleJogo {
     
     
     private String nickClient;
+    public void setNickClient(String nickClient) {
+        this.nickClient = nickClient;
+    }
     private String nickServer;
-    
+    public void setNickServer(String nickServer) {
+        this.nickServer = nickServer;
+    }
     
     
     public Boolean AtualizaString(char newBtn) {
         
         //verifica se a o campo ja foi preenchido ou não
         if(getCharJogo()[newBtn]=='-'){
-            getCharJogo()[newBtn] = 'C';
-            getCharJogo()[0]++;
-       
+            charJogo[newBtn] = 'S';
+            charJogo[0]++;
+ 
             verificaVitoria(getCharJogo());
             return true;
         } else {
@@ -82,12 +86,8 @@ public class ControleJogo {
     public void setCharJogo(char[] charJogo) {
         this.charJogo = charJogo;
     }
-    
-    public void setNickClient(String nickClient) {
-        this.nickClient = nickClient;
-    }
-    public void setNickServer(String nickServer) {
-        this.nickServer = nickServer;
+    public char[] getCharJogo() {
+        return charJogo;
     }
 }
 

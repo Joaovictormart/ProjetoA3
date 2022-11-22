@@ -6,7 +6,7 @@ public class Interface extends javax.swing.JFrame {
 
     public Interface() {
         initComponents();
-        desativaBotoes();
+//        desativaBotoes();
     }
     
     //Objetos
@@ -353,7 +353,7 @@ public class Interface extends javax.swing.JFrame {
         if(controler.AtualizaString(btn) == true){
             btn7.setText(marcadorClient);
             desativaBotoes();
-
+            Jogadas();
         }else{
             JOptionPane.showMessageDialog(null,"Este campo já está preenchido");
         }
@@ -364,6 +364,7 @@ public class Interface extends javax.swing.JFrame {
         if(controler.AtualizaString(btn) == true){
             btn2.setText(marcadorClient);
             desativaBotoes();
+            Jogadas();
         }else{
             JOptionPane.showMessageDialog(null,"Este campo já está preenchido");
         }
@@ -374,6 +375,7 @@ public class Interface extends javax.swing.JFrame {
         if(controler.AtualizaString(btn) == true){
             btn4.setText(marcadorClient);
             desativaBotoes();
+            Jogadas();
         }else{
             JOptionPane.showMessageDialog(null,"Este campo já está preenchido");
         }
@@ -384,6 +386,7 @@ public class Interface extends javax.swing.JFrame {
         if(controler.AtualizaString(btn) == true){
             btn1.setText(marcadorClient);
             desativaBotoes();
+            Jogadas();
         }else{
             JOptionPane.showMessageDialog(null,"Este campo já está preenchido");
         }
@@ -394,6 +397,7 @@ public class Interface extends javax.swing.JFrame {
         if(controler.AtualizaString(btn) == true){
             btn3.setText(marcadorClient);
             desativaBotoes();
+            Jogadas();
         }else{
             JOptionPane.showMessageDialog(null,"Este campo já está preenchido");
         }
@@ -404,6 +408,7 @@ public class Interface extends javax.swing.JFrame {
         if(controler.AtualizaString(btn) == true){
             btn6.setText(marcadorClient);
             desativaBotoes();
+            Jogadas();
         }else{
             JOptionPane.showMessageDialog(null,"Este campo já está preenchido");
         }
@@ -414,6 +419,7 @@ public class Interface extends javax.swing.JFrame {
         if(controler.AtualizaString(btn) == true){
             btn5.setText(marcadorClient);
             desativaBotoes();
+            Jogadas();
         }else{
             JOptionPane.showMessageDialog(null,"Este campo já está preenchido");
         }
@@ -424,6 +430,7 @@ public class Interface extends javax.swing.JFrame {
         if(controler.AtualizaString(btn) == true){
             btn9.setText(marcadorClient);
             desativaBotoes();
+            Jogadas();
         }else{
             JOptionPane.showMessageDialog(null,"Este campo já está preenchido");
         }
@@ -444,10 +451,6 @@ public class Interface extends javax.swing.JFrame {
     private void OutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OutActionPerformed
         
     }//GEN-LAST:event_OutActionPerformed
-
-    private void btnConectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConectarActionPerformed
-            Conectar();  
-    }//GEN-LAST:event_btnConectarActionPerformed
 
     private void AtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtualizarActionPerformed
         ativaBotoes();
@@ -475,6 +478,10 @@ public class Interface extends javax.swing.JFrame {
         else if(charJogo[9]=='C'){btn9.setText(marcadorClient);}
         else if(charJogo[9]=='S'){btn9.setText(marcadorServer);}
     }//GEN-LAST:event_AtualizarActionPerformed
+
+    private void btnConectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConectarActionPerformed
+        Conectar();
+    }//GEN-LAST:event_btnConectarActionPerformed
 
     private void inputIPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputIPActionPerformed
 
