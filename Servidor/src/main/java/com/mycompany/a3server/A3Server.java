@@ -14,10 +14,9 @@ public class A3Server {
     private String concatStr;
     private String strRecebida;
     private String[] arrayString;
-    private char [] voltaCharJogo;
+    private char[] charJogo;
 
     
-    Interface objInterface = new Interface();
     ControleJogo controler = new ControleJogo();
         
 
@@ -46,7 +45,6 @@ public class A3Server {
     } 
 
     public void rodarServidor() throws Exception {
-        String textoEnviado = "Olá, Cliente";
 
         serversocket = new ServerSocket(9500);
         System.out.println("Servidor iniciado!");
@@ -57,32 +55,25 @@ public class A3Server {
 //              Recebe mensagem
                 strRecebida = Conexao.receber(socket);
                 arrayString = strRecebida.split(";");
+
 //                lógica para primeira mensagem recebida
                 if(arrayString[0].equals("T")){
                     controler.setNickClient(arrayString[2]);
-                    objInterface.setMarcadorClient(arrayString[1]);
+                    controler.setMarcadorClient(arrayString[1]);
                     System.out.println("Primeira mensagem");
 
                     primeiraResposta();
                 }else{
-                    String voltaStrJogo;
-                    voltaStrJogo = Conexao.receber(socket);
-                    voltaCharJogo = voltaStrJogo.toCharArray();
-                    controler.setCharJogo(voltaCharJogo);
+                    setCharJogo(strRecebida);
                     
-                    System.out.println("Servidor enviou: " + voltaStrJogo);
+                    System.out.println("Servidor enviou:");
                 }
-              
-//                System.out.println(strRecebida);
-//                
-////              Envia mensagem
-//                Conexao.enviar(socket, textoEnviado);
-//                socket.close();
             }
         }
     }
     
     private void primeiraResposta() throws IOException{
+        Interface objInterface = new Interface();
         String nick = objInterface.getNick();
         String marcadorServer = objInterface.getMarcadorServer();
         
@@ -92,13 +83,19 @@ public class A3Server {
     }
     
     public void jogada(char[] charJogo) throws Exception {    
-//        socket = new Socket(ip, porta);
         
         String vaiStrJogo = String.valueOf(charJogo);
-        
         
         // Enviar mensagem para o servidor
         Conexao.enviar(socket, vaiStrJogo);
     }
 
+    
+    public void setCharJogo(String strJogo) {
+        charJogo = strJogo.toCharArray();
+    }
+    public char[] getCharJogo() {
+        return charJogo;
+    }
+    
 }

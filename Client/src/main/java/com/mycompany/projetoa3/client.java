@@ -17,19 +17,20 @@ public class client {
     private String StringInicial;
     private String[] arrayString;
     private char [] voltaCharJogo;
+    private char[] charJogo;
     
     
     public void primeiraConexao(String nickClient, String marcadorClient, String ip, String porta) throws Exception{
         Port = Integer.parseInt(porta);
         socket = new Socket(ip, Port);
         
-        Interface objInterface = new Interface();
         
         controler.setNickClient(nickClient);
     
         concatStr = "T;" + marcadorClient + ";" + nickClient;
         // Enviar mensagem para o servidor
         Conexao.enviar(socket, concatStr);
+        
         
         // Receber mensagem do servidor
         StringInicial = Conexao.receber(socket);
@@ -40,40 +41,41 @@ public class client {
 
             //Libera o game para começar
             String strJogo= "0---------";
-            controler.setCharJogo(strJogo.toCharArray());
+            setCharJogo(strJogo);
             
-            System.out.println(controler.getCharJogo());
-
-            System.out.println("passou por aqui ");
-            
+            System.out.println(getCharJogo());
+            System.out.println("passou por aqui ");  
         }else{
             String voltaStrJogo;
             voltaStrJogo = Conexao.receber(socket);
             voltaCharJogo = voltaStrJogo.toCharArray();
-            controler.setCharJogo(voltaCharJogo);
+//            controler.setCharJogo(voltaCharJogo);
 
             System.out.println("Servidor enviou: " + voltaStrJogo);
         }
         
-        
-        
-        //=D;gui
-        System.out.println(arrayString[1]);
     }
     
+    
     public void jogada(char[] charJogo) throws Exception {    
-//        socket = new Socket(ip, porta);
         
         String vaiStrJogo = String.valueOf(charJogo);
-        String voltaStrJogo;
         
         // Enviar mensagem para o servidor
         Conexao.enviar(socket, vaiStrJogo);
     }
 
     public static void main(String[] args) {
-        
         Interface objInterface = new Interface();
         objInterface.setVisible(true);
-    } 
+    }  
+
+   
+    public void setCharJogo(String strJogo) {
+        charJogo = strJogo.toCharArray();
+    }
+    public char[] getCharJogo() {
+        return charJogo;
+    }
+    
 }

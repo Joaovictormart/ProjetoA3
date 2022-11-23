@@ -350,7 +350,7 @@ public class Interface extends javax.swing.JFrame {
     //Paineis de jogo
     private void btn7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn7ActionPerformed
         char btn= 7;
-        if(controler.AtualizaString(btn) == true){
+        if(controler.AtualizaString(cliente.getCharJogo(),btn) == true){
             btn7.setText(marcadorClient);
             desativaBotoes();
             Jogadas();
@@ -361,7 +361,7 @@ public class Interface extends javax.swing.JFrame {
   
     private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
         char btn= 2;
-        if(controler.AtualizaString(btn) == true){
+        if(controler.AtualizaString(cliente.getCharJogo(), btn) == true){
             btn2.setText(marcadorClient);
             desativaBotoes();
             Jogadas();
@@ -372,7 +372,7 @@ public class Interface extends javax.swing.JFrame {
 
     private void btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed
         char btn= 4;
-        if(controler.AtualizaString(btn) == true){
+        if(controler.AtualizaString(cliente.getCharJogo(), btn) == true){
             btn4.setText(marcadorClient);
             desativaBotoes();
             Jogadas();
@@ -383,7 +383,7 @@ public class Interface extends javax.swing.JFrame {
 
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
         char btn= 1;
-        if(controler.AtualizaString(btn) == true){
+        if(controler.AtualizaString(cliente.getCharJogo(), btn) == true){
             btn1.setText(marcadorClient);
             desativaBotoes();
             Jogadas();
@@ -394,7 +394,7 @@ public class Interface extends javax.swing.JFrame {
 
     private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
         char btn= 3;
-        if(controler.AtualizaString(btn) == true){
+        if(controler.AtualizaString(cliente.getCharJogo(), btn) == true){
             btn3.setText(marcadorClient);
             desativaBotoes();
             Jogadas();
@@ -405,7 +405,7 @@ public class Interface extends javax.swing.JFrame {
 
     private void btn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn6ActionPerformed
         char btn= 6;
-        if(controler.AtualizaString(btn) == true){
+        if(controler.AtualizaString(cliente.getCharJogo() ,btn) == true){
             btn6.setText(marcadorClient);
             desativaBotoes();
             Jogadas();
@@ -416,7 +416,7 @@ public class Interface extends javax.swing.JFrame {
 
     private void btn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn5ActionPerformed
         char btn= 5;
-        if(controler.AtualizaString(btn) == true){
+        if(controler.AtualizaString(cliente.getCharJogo(), btn) == true){
             btn5.setText(marcadorClient);
             desativaBotoes();
             Jogadas();
@@ -427,7 +427,7 @@ public class Interface extends javax.swing.JFrame {
 
     private void btn9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn9ActionPerformed
         char btn= 9;
-        if(controler.AtualizaString(btn) == true){
+        if(controler.AtualizaString(cliente.getCharJogo(), btn) == true){
             btn9.setText(marcadorClient);
             desativaBotoes();
             Jogadas();
@@ -438,7 +438,7 @@ public class Interface extends javax.swing.JFrame {
 
     private void btn8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn8ActionPerformed
         char btn= 8;
-        if(controler.AtualizaString(btn) == true){
+        if(controler.AtualizaString(cliente.getCharJogo(), btn) == true){
             btn8.setText(marcadorClient);
             desativaBotoes();
             Jogadas();
@@ -457,7 +457,7 @@ public class Interface extends javax.swing.JFrame {
 
         //Atualiza o painel do jogador 
         //Atualiza apenas um de cada vez
-        char[] charJogo = controler.getCharJogo();
+        char[] charJogo = cliente.getCharJogo();
         
         if(charJogo[1]=='C'){btn1.setText(marcadorClient);}
         else if(charJogo[1]=='S'){btn1.setText(marcadorServer);}

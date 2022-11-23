@@ -7,41 +7,25 @@ public class ControleJogo {
 //Variáveis de Controle
 
     private char[] charJogo;
-
-    //char[] charMarcador = getMarcadorClient().toCharArray();
     
     //lógica para mudar o icone de cada usuário
-    private String marcadorClient="X"; //Marcador de cada player
-    public String getMarcadorClient() {
-        return marcadorClient;
-    }
+    private String marcadorClient = "X"; //Marcador de cada player
     private String marcadorServer = "O";
-    public String getMarcadorServer() {
-        return marcadorServer;
-    }
-    public void setMarcadorServer(String marcadorServer) {
-        this.marcadorServer = marcadorServer;
-    }
-    
-    
+
     private String nickClient;
-    public void setNickClient(String nickClient) {
-        this.nickClient = nickClient;
-    }
     private String nickServer;
-    public void setNickServer(String nickServer) {
-        this.nickServer = nickServer;
-    }
+
     
     
-    public Boolean AtualizaString(char newBtn) {
+    public Boolean AtualizaString(char[] chJogo, char newBtn) {
         
         //verifica se a o campo ja foi preenchido ou não
-        if(getCharJogo()[newBtn]=='-'){
-            charJogo[newBtn] = 'S';
-            charJogo[0]++;
- 
-            verificaVitoria(getCharJogo());
+        if(chJogo[newBtn]=='-'){
+            chJogo[newBtn] = 'S';
+            chJogo[0]++;
+            
+            setCharJogo(chJogo);
+            verificaVitoria(chJogo);
             return true;
         } else {
             return false;
@@ -89,6 +73,31 @@ public class ControleJogo {
     public char[] getCharJogo() {
         return charJogo;
     }
+    
+    public void setMarcadorClient(String marcadorClient) {
+        this.marcadorClient = marcadorClient;
+    }
+    public String getMarcadorClient() {
+        return marcadorClient;
+    }
+    
+    public void setMarcadorServer(String marcadorServer) {
+        this.marcadorServer = marcadorServer;
+    }
+    public String getMarcadorServer() {
+        return marcadorServer;
+    }
+    
+    public void setNickClient(String nickClient) {
+        this.nickClient = nickClient;
+    }
+    public void setNickServer(String nickServer) {
+        this.nickServer = nickServer;
+    }
+
+
+    
+    
 }
 
         

@@ -11,26 +11,16 @@ public class Interface extends javax.swing.JFrame {
     
     //Objetos
     ControleJogo controler = new ControleJogo();
+    A3Server server = new A3Server();
     
     //Variáveis de controle
     private String marcadorClient = controler.getMarcadorClient();
-    public String getMarcadorClient() {
-        return marcadorClient;
-    }
-    public void setMarcadorClient(String marcadorClient) {
-        this.marcadorClient = marcadorClient;
-    }
+
 
     private String marcadorServer = controler.getMarcadorServer();
     private String nick = "servidor";
     
-    public String getMarcadorServer() {
-        return marcadorServer;
-    }
 
-    public String getNick() {
-        return nick;
-    }
 
     
     @SuppressWarnings("unchecked")
@@ -301,10 +291,10 @@ public class Interface extends javax.swing.JFrame {
     //Paineis de jogo
     private void btn7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn7ActionPerformed
         char btn= 7;
-        if(controler.AtualizaString(btn) == true){
+        if(controler.AtualizaString(server.getCharJogo(), btn) == true){
             btn7.setText(getMarcadorClient());
             desativaBotoes();
-
+            Jogadas();
         }else{
             JOptionPane.showMessageDialog(null,"Este campo já está preenchido");
         }
@@ -312,9 +302,10 @@ public class Interface extends javax.swing.JFrame {
   
     private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
         char btn= 2;
-        if(controler.AtualizaString(btn) == true){
+        if(controler.AtualizaString(server.getCharJogo(), btn) == true){
             btn2.setText(getMarcadorClient());
             desativaBotoes();
+            Jogadas();
         }else{
             JOptionPane.showMessageDialog(null,"Este campo já está preenchido");
         }
@@ -322,9 +313,10 @@ public class Interface extends javax.swing.JFrame {
 
     private void btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed
         char btn= 4;
-        if(controler.AtualizaString(btn) == true){
+        if(controler.AtualizaString(server.getCharJogo(), btn) == true){
             btn4.setText(getMarcadorClient());
             desativaBotoes();
+            Jogadas();
         }else{
             JOptionPane.showMessageDialog(null,"Este campo já está preenchido");
         }
@@ -332,9 +324,10 @@ public class Interface extends javax.swing.JFrame {
 
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
         char btn= 1;
-        if(controler.AtualizaString(btn) == true){
+        if(controler.AtualizaString(server.getCharJogo(), btn) == true){
             btn1.setText(getMarcadorClient());
             desativaBotoes();
+            Jogadas();
         }else{
             JOptionPane.showMessageDialog(null,"Este campo já está preenchido");
         }
@@ -342,9 +335,10 @@ public class Interface extends javax.swing.JFrame {
 
     private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
         char btn= 3;
-        if(controler.AtualizaString(btn) == true){
+        if(controler.AtualizaString(server.getCharJogo(), btn) == true){
             btn3.setText(getMarcadorClient());
             desativaBotoes();
+            Jogadas();
         }else{
             JOptionPane.showMessageDialog(null,"Este campo já está preenchido");
         }
@@ -352,9 +346,10 @@ public class Interface extends javax.swing.JFrame {
 
     private void btn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn6ActionPerformed
         char btn= 6;
-        if(controler.AtualizaString(btn) == true){
+        if(controler.AtualizaString(server.getCharJogo(), btn) == true){
             btn6.setText(getMarcadorClient());
             desativaBotoes();
+            Jogadas();
         }else{
             JOptionPane.showMessageDialog(null,"Este campo já está preenchido");
         }
@@ -362,9 +357,10 @@ public class Interface extends javax.swing.JFrame {
 
     private void btn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn5ActionPerformed
         char btn= 5;
-        if(controler.AtualizaString(btn) == true){
+        if(controler.AtualizaString(server.getCharJogo(), btn) == true){
             btn5.setText(getMarcadorClient());
             desativaBotoes();
+            Jogadas();
         }else{
             JOptionPane.showMessageDialog(null,"Este campo já está preenchido");
         }
@@ -372,9 +368,10 @@ public class Interface extends javax.swing.JFrame {
 
     private void btn9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn9ActionPerformed
         char btn= 9;
-        if(controler.AtualizaString(btn) == true){
+        if(controler.AtualizaString(server.getCharJogo(), btn) == true){
             btn9.setText(getMarcadorClient());
             desativaBotoes();
+            Jogadas();
         }else{
             JOptionPane.showMessageDialog(null,"Este campo já está preenchido");
         }
@@ -382,7 +379,7 @@ public class Interface extends javax.swing.JFrame {
 
     private void btn8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn8ActionPerformed
         char btn= 8;
-        if(controler.AtualizaString(btn) == true){
+        if(controler.AtualizaString(server.getCharJogo(), btn) == true){
             btn8.setText(getMarcadorClient());
             desativaBotoes();
             Jogadas();
@@ -401,7 +398,7 @@ public class Interface extends javax.swing.JFrame {
 
         //Atualiza o painel do jogador 
         //Atualiza apenas um de cada vez
-        char[] charJogo = controler.getCharJogo();
+        char[] charJogo = server.getCharJogo();
         
         if(charJogo[1]=='C'){btn1.setText(getMarcadorClient());}
         else if(charJogo[1]=='S'){btn1.setText(getMarcadorServer());}
@@ -484,15 +481,8 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JSeparator jSeparator2;
     // End of variables declaration//GEN-END:variables
     
-    private void Conectar() {      
-        try {
-//            server.primeiraResposta(inputNick.getText(), marcadorServer);
-        } catch(Exception e){
-            e.printStackTrace();
-        }
-    } 
+
     private void Jogadas() { 
-        A3Server server = new A3Server();
         try {
             server.jogada(controler.getCharJogo());
         } catch(Exception e){
@@ -522,4 +512,19 @@ public class Interface extends javax.swing.JFrame {
         btn9.setEnabled(true);
     }
 
+    public String getMarcadorServer() {
+        return marcadorServer;
+    }
+
+    public String getNick() {
+        return nick;
+    }
+    
+    public String getMarcadorClient() {
+        return marcadorClient;
+    }
+    public void setMarcadorClient(String marcadorClient) {
+        this.marcadorClient = marcadorClient;
+    }
+    
 }
