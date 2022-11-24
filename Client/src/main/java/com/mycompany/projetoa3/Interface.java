@@ -580,7 +580,7 @@ public class Interface extends javax.swing.JFrame {
         btn8.setEnabled(false);
         btn9.setEnabled(false);
     }
-    private void ativaBotoes() {
+    public void ativaBotoes() {
         btn1.setEnabled(true);
         btn2.setEnabled(true);
         btn3.setEnabled(true);

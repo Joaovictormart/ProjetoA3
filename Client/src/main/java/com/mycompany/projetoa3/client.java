@@ -33,25 +33,28 @@ public class client {
         
         
         // Receber mensagem do servidor
-        StringInicial = Conexao.receber(socket);
-        arrayString = StringInicial.split(";");
-        if(arrayString[0].equals("T")){
-            controler.setMarcadorServer(arrayString[1]);
-            controler.setNickServer(arrayString[2]);
+        while(true){
+            StringInicial = Conexao.receber(socket);
+            arrayString = StringInicial.split(";");
+            if(arrayString[0].equals("T")){
+                controler.setMarcadorServer(arrayString[1]);
+                controler.setNickServer(arrayString[2]);
 
-            //Libera o game para começar
-            String strJogo= "0---------";
-            setCharJogo(strJogo);
-            
-            System.out.println(getCharJogo());
-            System.out.println("passou por aqui ");  
-        }else{
-            String voltaStrJogo;
-            voltaStrJogo = Conexao.receber(socket);
-            voltaCharJogo = voltaStrJogo.toCharArray();
-//            controler.setCharJogo(voltaCharJogo);
+                //Libera o game para começar
+                String strJogo= "0---------";
+                setCharJogo(strJogo);
 
-            System.out.println("Servidor enviou: " + voltaStrJogo);
+                System.out.println(getCharJogo());
+                System.out.println("passou por aqui ");  
+                jogada(charJogo);
+            }else{
+                String voltaStrJogo;
+                voltaStrJogo = Conexao.receber(socket);
+                voltaCharJogo = voltaStrJogo.toCharArray();
+    //            controler.setCharJogo(voltaCharJogo);
+
+                System.out.println("Servidor enviou: " + voltaStrJogo);
+            }
         }
         
     }
@@ -61,8 +64,10 @@ public class client {
         
         String vaiStrJogo = String.valueOf(charJogo);
         
+        vaiStrJogo = "1---C-----";
         // Enviar mensagem para o servidor
         Conexao.enviar(socket, vaiStrJogo);
+        System.out.println("JogadaEnviada");
     }
 
     public static void main(String[] args) {

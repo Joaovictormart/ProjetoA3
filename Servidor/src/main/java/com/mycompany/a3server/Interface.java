@@ -399,6 +399,7 @@ public class Interface extends javax.swing.JFrame {
         //Atualiza o painel do jogador 
         //Atualiza apenas um de cada vez
         char[] charJogo = server.getCharJogo();
+
         
         if(charJogo[1]=='C'){btn1.setText(getMarcadorClient());}
         else if(charJogo[1]=='S'){btn1.setText(getMarcadorServer());}

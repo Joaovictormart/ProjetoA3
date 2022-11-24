@@ -46,30 +46,32 @@ public class A3Server {
 
     public void rodarServidor() throws Exception {
 
-        serversocket = new ServerSocket(9500);
-        System.out.println("Servidor iniciado!");
-
-        while(true) {
-            if (connect()) {
-
-//              Recebe mensagem
-                strRecebida = Conexao.receber(socket);
-                arrayString = strRecebida.split(";");
-
-//                lógica para primeira mensagem recebida
-                if(arrayString[0].equals("T")){
-                    controler.setNickClient(arrayString[2]);
-                    controler.setMarcadorClient(arrayString[1]);
-                    System.out.println("Primeira mensagem");
-
-                    primeiraResposta();
-                }else{
-                    setCharJogo(strRecebida);
-                    
-                    System.out.println("Servidor enviou:");
-                }
-            }
+        if(serversocket == null){
+            serversocket = new ServerSocket(9500);
         }
+        
+        boolean conectado = connect();
+
+//          Recebe mensagem
+        while(conectado) {
+            strRecebida = Conexao.receber(socket);
+            arrayString = strRecebida.split(";");
+
+//          lógica para primeira mensagem recebida
+            if(arrayString[0].equals("T")){
+                controler.setNickClient(arrayString[2]);
+                controler.setMarcadorClient(arrayString[1]);
+                System.out.println("Primeira mensagem");
+                primeiraResposta();
+            }else{
+                setCharJogo(strRecebida);
+                System.out.println(" jogada:" + strRecebida);
+            }
+
+
+            System.out.println("Servidor enviou:" + strRecebida);
+        }
+        socket.close();
     }
     
     private void primeiraResposta() throws IOException{
@@ -80,6 +82,7 @@ public class A3Server {
         concatStr = "T;" + marcadorServer + ";" + nick ;
         System.out.println(concatStr);
         Conexao.enviar(socket, concatStr);
+   
     }
     
     public void jogada(char[] charJogo) throws Exception {    
@@ -88,6 +91,13 @@ public class A3Server {
         
         // Enviar mensagem para o servidor
         Conexao.enviar(socket, vaiStrJogo);
+        
+        try {
+            A3Server servidor = new A3Server();
+            servidor.rodarServidor();
+        } catch(Exception e){
+            e.printStackTrace();
+        }
     }
 
     
@@ -95,7 +105,9 @@ public class A3Server {
         charJogo = strJogo.toCharArray();
     }
     public char[] getCharJogo() {
+        System.out.println(charJogo);
         return charJogo;
+        
     }
     
 }
