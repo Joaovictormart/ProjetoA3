@@ -1,5 +1,7 @@
 package com.mycompany.projetoa3;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class Interface extends javax.swing.JFrame {
@@ -14,14 +16,19 @@ public class Interface extends javax.swing.JFrame {
     client cliente = new client();
     
     //Variáveis de controle
+    private String IP;
+    private String Porta;
+    private String nickClient = controler.getNickClient();
     private String marcadorClient = controler.getMarcadorClient();
     private String marcadorServer = controler.getMarcadorServer();
+    private char[] charJogo;
+    private String StrEnviada;
     
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel4 = new javax.swing.JPanel();
+        painelPrincipal = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         btn7 = new javax.swing.JButton();
         btn2 = new javax.swing.JButton();
@@ -48,13 +55,11 @@ public class Interface extends javax.swing.JFrame {
         inputPort = new javax.swing.JTextField();
         btnConectar = new javax.swing.JButton();
         Atualizar = new javax.swing.JButton();
-        inputNick = new javax.swing.JTextField();
-        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel4.setBackground(new java.awt.Color(255, 255, 51));
-        jPanel4.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        painelPrincipal.setBackground(new java.awt.Color(255, 255, 51));
+        painelPrincipal.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         jPanel1.setBackground(new java.awt.Color(102, 255, 102));
 
@@ -252,9 +257,6 @@ public class Interface extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setForeground(new java.awt.Color(242, 242, 242));
-        jLabel8.setText("Nick");
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -272,16 +274,10 @@ public class Interface extends javax.swing.JFrame {
                                 .addComponent(jLabel6)
                                 .addGap(103, 103, 103)
                                 .addComponent(jLabel7)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(inputNick, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE))
-                        .addGap(6, 6, 6))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(Atualizar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 85, Short.MAX_VALUE)
                         .addComponent(Out, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
@@ -294,13 +290,11 @@ public class Interface extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8))
+                    .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(inputIP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(inputPort, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(inputNick, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(inputPort, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addComponent(btnConectar)
                 .addGap(18, 18, 18)
@@ -310,38 +304,40 @@ public class Interface extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
+        javax.swing.GroupLayout painelPrincipalLayout = new javax.swing.GroupLayout(painelPrincipal);
+        painelPrincipal.setLayout(painelPrincipalLayout);
+        painelPrincipalLayout.setHorizontalGroup(
+            painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelPrincipalLayout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+        painelPrincipalLayout.setVerticalGroup(
+            painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(painelPrincipalLayout.createSequentialGroup()
+                .addGroup(painelPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(painelPrincipalLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(painelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(painelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -351,9 +347,12 @@ public class Interface extends javax.swing.JFrame {
     private void btn7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn7ActionPerformed
         char btn= 7;
         if(controler.AtualizaString(cliente.getCharJogo(),btn) == true){
+            setCharJogo(cliente.getCharJogo());
             btn7.setText(marcadorClient);
             desativaBotoes();
-            Jogadas();
+
+            StrEnviada = controler.getCharJogo().toString();
+            enviaMensagem(StrEnviada);
         }else{
             JOptionPane.showMessageDialog(null,"Este campo já está preenchido");
         }
@@ -362,9 +361,12 @@ public class Interface extends javax.swing.JFrame {
     private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
         char btn= 2;
         if(controler.AtualizaString(cliente.getCharJogo(), btn) == true){
+            setCharJogo(cliente.getCharJogo());
             btn2.setText(marcadorClient);
             desativaBotoes();
-            Jogadas();
+            
+            StrEnviada = controler.getCharJogo().toString();
+            enviaMensagem(StrEnviada);
         }else{
             JOptionPane.showMessageDialog(null,"Este campo já está preenchido");
         }
@@ -373,9 +375,12 @@ public class Interface extends javax.swing.JFrame {
     private void btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed
         char btn= 4;
         if(controler.AtualizaString(cliente.getCharJogo(), btn) == true){
+            setCharJogo(cliente.getCharJogo());
             btn4.setText(marcadorClient);
             desativaBotoes();
-            Jogadas();
+            
+            StrEnviada = controler.getCharJogo().toString();
+            enviaMensagem(StrEnviada);
         }else{
             JOptionPane.showMessageDialog(null,"Este campo já está preenchido");
         }
@@ -384,9 +389,12 @@ public class Interface extends javax.swing.JFrame {
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
         char btn= 1;
         if(controler.AtualizaString(cliente.getCharJogo(), btn) == true){
+            setCharJogo(cliente.getCharJogo());
             btn1.setText(marcadorClient);
             desativaBotoes();
-            Jogadas();
+            
+            StrEnviada = controler.getCharJogo().toString();
+            enviaMensagem(StrEnviada);
         }else{
             JOptionPane.showMessageDialog(null,"Este campo já está preenchido");
         }
@@ -395,9 +403,12 @@ public class Interface extends javax.swing.JFrame {
     private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
         char btn= 3;
         if(controler.AtualizaString(cliente.getCharJogo(), btn) == true){
+            setCharJogo(cliente.getCharJogo());
             btn3.setText(marcadorClient);
             desativaBotoes();
-            Jogadas();
+            
+            StrEnviada = controler.getCharJogo().toString();
+            enviaMensagem(StrEnviada);
         }else{
             JOptionPane.showMessageDialog(null,"Este campo já está preenchido");
         }
@@ -406,9 +417,12 @@ public class Interface extends javax.swing.JFrame {
     private void btn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn6ActionPerformed
         char btn= 6;
         if(controler.AtualizaString(cliente.getCharJogo() ,btn) == true){
+            setCharJogo(cliente.getCharJogo());
             btn6.setText(marcadorClient);
             desativaBotoes();
-            Jogadas();
+            
+            StrEnviada = controler.getCharJogo().toString();
+            enviaMensagem(StrEnviada);
         }else{
             JOptionPane.showMessageDialog(null,"Este campo já está preenchido");
         }
@@ -417,9 +431,12 @@ public class Interface extends javax.swing.JFrame {
     private void btn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn5ActionPerformed
         char btn= 5;
         if(controler.AtualizaString(cliente.getCharJogo(), btn) == true){
+            setCharJogo(cliente.getCharJogo());
             btn5.setText(marcadorClient);
             desativaBotoes();
-            Jogadas();
+            
+            StrEnviada = controler.getCharJogo().toString();
+            enviaMensagem(StrEnviada);
         }else{
             JOptionPane.showMessageDialog(null,"Este campo já está preenchido");
         }
@@ -428,9 +445,12 @@ public class Interface extends javax.swing.JFrame {
     private void btn9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn9ActionPerformed
         char btn= 9;
         if(controler.AtualizaString(cliente.getCharJogo(), btn) == true){
+            setCharJogo(cliente.getCharJogo());
             btn9.setText(marcadorClient);
             desativaBotoes();
-            Jogadas();
+            
+            StrEnviada = controler.getCharJogo().toString();
+            enviaMensagem(StrEnviada);
         }else{
             JOptionPane.showMessageDialog(null,"Este campo já está preenchido");
         }
@@ -438,10 +458,14 @@ public class Interface extends javax.swing.JFrame {
 
     private void btn8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn8ActionPerformed
         char btn= 8;
+        System.out.println("opa");
         if(controler.AtualizaString(cliente.getCharJogo(), btn) == true){
+            setCharJogo(cliente.getCharJogo());
             btn8.setText(marcadorClient);
             desativaBotoes();
-            Jogadas();
+            
+            StrEnviada = controler.getCharJogo().toString();
+            enviaMensagem(StrEnviada);
         }else{
             JOptionPane.showMessageDialog(null,"Este campo já está preenchido");
         }
@@ -480,7 +504,17 @@ public class Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_AtualizarActionPerformed
 
     private void btnConectarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConectarActionPerformed
-        Conectar();
+        
+        setIP(inputIP.getText()); 
+        setPorta(inputPort.getText());
+        
+        StrEnviada = "T;" + controler.getMarcadorClient() + ";" + controler.getNickClient();
+        try{
+            cliente.primeiraConexao(getIP(), getPorta(), StrEnviada);
+        }catch (Exception ex) {
+            Logger.getLogger(client.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_btnConectarActionPerformed
 
     private void inputIPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputIPActionPerformed
@@ -537,7 +571,6 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JButton btn9;
     private javax.swing.JButton btnConectar;
     private javax.swing.JTextField inputIP;
-    private javax.swing.JTextField inputNick;
     private javax.swing.JTextField inputPort;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -546,29 +579,22 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    public javax.swing.JPanel painelPrincipal;
     // End of variables declaration//GEN-END:variables
     
-    private void Conectar() {      
-        try {
-            cliente.primeiraConexao(inputNick.getText(), marcadorClient, inputIP.getText(), inputPort.getText());
-        } catch(Exception e){
-            e.printStackTrace();
-        }
-    } 
-    private void Jogadas() {      
-        try {
-            cliente.jogada(controler.getCharJogo());
-        } catch(Exception e){
-            e.printStackTrace();
+    private void enviaMensagem(String StrEnviada){
+        try{
+            cliente.EnviaMensagem(StrEnviada);
+        }catch (Exception ex) {
+            Logger.getLogger(client.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
     private void desativaBotoes() {
         btn1.setEnabled(false);
         btn2.setEnabled(false);
@@ -590,6 +616,38 @@ public class Interface extends javax.swing.JFrame {
         btn7.setEnabled(true);
         btn8.setEnabled(true);
         btn9.setEnabled(true);
+    }
+    
+    public boolean aguardaJogada() {
+
+        while(cliente.getCharJogo() == charJogo){
+            System.out.println("Esperando mensagem");
+        }
+        return true;
+    }
+
+    public char[] getCharJogo() {
+        return charJogo;
+    }
+
+    public void setCharJogo(char[] charJogo) {
+        this.charJogo = charJogo;
+    }
+
+    public String getIP() {
+        return IP;
+    }
+
+    public void setIP(String IP) {
+        this.IP = IP;
+    }
+
+    public String getPorta() {
+        return Porta;
+    }
+
+    public void setPorta(String Porta) {
+        this.Porta = Porta;
     }
 
 }

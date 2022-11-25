@@ -1,8 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-package com.mycompany.projetoa3;
+
+package com.mycompany.a3server;
 
 /**
  *
@@ -17,7 +14,7 @@ public class TelaInicio extends javax.swing.JFrame {
 
     ControleJogo controler = new ControleJogo();
     Interface objInterface = new Interface();
-    client cliente = new client();
+    A3Server server = new A3Server();
     
     private String Nick;
     private String Marcador;
@@ -139,7 +136,7 @@ public class TelaInicio extends javax.swing.JFrame {
         controler.setMarcadorClient(Marcador);
         
         dispose();
-        cliente.criaThread();
+        server.iniciaThread();
     }//GEN-LAST:event_joinActionPerformed
 
     /**

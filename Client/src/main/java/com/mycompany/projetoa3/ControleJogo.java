@@ -10,8 +10,9 @@ public class ControleJogo {
     //lógica para mudar o icone de cada usuário
     private String marcadorClient="X"; //Marcador de cada player
     private String marcadorServer;
-    private String nickClient;
+    private String nickClient="client";
     private String nickServer;
+
     
     
     public Boolean AtualizaString(char[] chJogo, char newBtn) {
@@ -42,7 +43,7 @@ public class ControleJogo {
             || //DIAGONAL
                (charJogo[1]==('C') && charJogo[5]==('C') && charJogo[9]==('C'))
             || (charJogo[3]==('C') && charJogo[5]==('C') && charJogo[7]==('C'))){
-            JOptionPane.showMessageDialog(null,"Vitória do "+marcadorClient);
+            JOptionPane.showMessageDialog(null,"Vitória do "+getMarcadorClient());
         }else
         if(//VERTICAL O
             (charJogo[1]==('S') && charJogo[2]==('S') && charJogo[3]==('S'))
@@ -87,6 +88,14 @@ public class ControleJogo {
 
     public void setCharJogo(char[] charJogo) {
         this.charJogo = charJogo;
+    }
+
+    public String getNickClient() {
+        return nickClient;
+    }
+
+    public void setMarcadorClient(String marcadorClient) {
+        this.marcadorClient = marcadorClient;
     }
 
 }

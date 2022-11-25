@@ -6,7 +6,7 @@ import java.io.OutputStream;
 import java.net.Socket;
 
 public class Conexao {
-
+    
     public static String receber(Socket socket) throws IOException {
         InputStream in = socket.getInputStream();
         byte infoBytes[] = new byte[100];

@@ -9,10 +9,8 @@ import java.util.logging.Logger;
 public class A3Server {
     
 //  Variáveis de controle
-    Socket socket;
-    ServerSocket serversocket;
+    static Socket socket;
     private String concatStr;
-    private String strRecebida;
     private String[] arrayString;
     private char[] charJogo;
 
@@ -20,59 +18,123 @@ public class A3Server {
     ControleJogo controler = new ControleJogo();
         
 
-    public boolean connect() {
-        try {
-            socket = serversocket.accept();  // fase de conexao
-            return true;
-        } catch (IOException e) {
-            System.err.println("Nao fez conexao" + e.getMessage());
-            return false;
-        }
-    }
+
 
     public static void main(String[] args) {
         
-        Interface objInterface = new Interface();
-        objInterface.setVisible(true);
+        TelaInicio inicio = new TelaInicio();
+        inicio.setVisible(true);
        
-        try {
-            A3Server servidor = new A3Server();
-            servidor.rodarServidor();
-        } catch(Exception e){
-            e.printStackTrace();
-        }
+//        try {
+//            A3Server servidor = new A3Server();
+//            servidor.rodarServidor();
+//        } catch(Exception e){
+//            e.printStackTrace();
+//        }
 
     } 
 
     public void rodarServidor() throws Exception {
 
-        if(serversocket == null){
-            serversocket = new ServerSocket(9500);
+//        if(serversocket == null){
+//            serversocket = new ServerSocket(9500);
+//        }
+//        
+//        boolean conectado = connect();
+//
+////          Recebe mensagem
+//        while(conectado) {
+//            strRecebida = Conexao.receber(socket);
+//            arrayString = strRecebida.split(";");
+//
+////          lógica para primeira mensagem recebida
+//            if(arrayString[0].equals("T")){
+//                controler.setNickClient(arrayString[2]);
+//                controler.setMarcadorClient(arrayString[1]);
+//                System.out.println("Primeira mensagem");
+//                primeiraResposta();
+//            }else{
+//                setCharJogo(strRecebida);
+//                System.out.println(" jogada:" + strRecebida);
+//            }
+//
+//
+//            System.out.println("Servidor enviou:" + strRecebida);
+//        }
+//        socket.close();
+    }
+    
+    private static Runnable rodarServidor = new Runnable(){
+        
+        private String rmsg;
+        private String[] arrayString;
+        private String strRecebida;
+
+        ServerSocket serversocket;
+
+
+        ControleJogo controler = new ControleJogo();
+        Interface objInterface = new Interface();
+        A3Server server = new A3Server();
+
+        
+        public boolean connect() {
+            try {
+                socket = serversocket.accept();  // fase de conexao
+                return true;
+            } catch (IOException e) {
+                System.err.println("Nao fez conexao" + e.getMessage());
+                return false;
+            }
         }
         
-        boolean conectado = connect();
-
-//          Recebe mensagem
-        while(conectado) {
-            strRecebida = Conexao.receber(socket);
-            arrayString = strRecebida.split(";");
-
-//          lógica para primeira mensagem recebida
-            if(arrayString[0].equals("T")){
-                controler.setNickClient(arrayString[2]);
-                controler.setMarcadorClient(arrayString[1]);
-                System.out.println("Primeira mensagem");
-                primeiraResposta();
-            }else{
-                setCharJogo(strRecebida);
-                System.out.println(" jogada:" + strRecebida);
+        public void run(){
+            
+            if(serversocket == null){
+                try {
+                    serversocket = new ServerSocket(9500);
+                } catch (IOException ex) {
+                    Logger.getLogger(A3Server.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
+           
+            
+            while(connect()){
+                try {
+                    strRecebida = Conexao.receber(socket);
+                    arrayString = strRecebida.split(";");
 
+        //          lógica para primeira mensagem recebida
+                    if(arrayString[0].equals("T")){
+                        controler.setNickClient(arrayString[2]);
+                        controler.setMarcadorClient(arrayString[1]);
+                        System.out.println("Primeira mensagem");
+                        server.primeiraResposta();
+                    }else{
+                        server.setCharJogo(strRecebida);
+                        System.out.println(" jogada:" + strRecebida);
+                    }
 
-            System.out.println("Servidor enviou:" + strRecebida);
+                        System.out.println("Servidor enviou:" + strRecebida);
+                    } 
+                catch (IOException ex) {
+                    Logger.getLogger(A3Server.class.getName()).log(Level.SEVERE, null, ex);
+                }        
+            }
         }
-        socket.close();
+    };
+    
+    public void iniciaThread(){
+        new Thread(esperaJogada).start();
+        new Thread(rodarServidor).start();
     }
+    
+    private static Runnable esperaJogada = new Runnable(){
+        public void run(){
+            Interface objInterface = new Interface();
+            objInterface.setVisible(true);
+        }
+    };
     
     private void primeiraResposta() throws IOException{
         Interface objInterface = new Interface();
