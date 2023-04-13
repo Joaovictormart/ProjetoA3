@@ -16,7 +16,6 @@ public class client {
     static Socket socket;
     private String vaiStrJogo;
     private char[] charJogo;
-    static String strJogo= "0---------";
     
     
     public void primeiraConexao(String ip, String porta, String StrEnviada) throws Exception{
@@ -53,8 +52,12 @@ public class client {
         inicio.setVisible(true);
     }  
     
-   
-
+    public void interpretaJogada(String[] arrayString){
+        String strJogo= "0---------";
+        setCharJogo(strJogo);
+        
+    }
+    
     private static Runnable RecebeMensagem = new Runnable(){
         
         private boolean auxsinal;
@@ -84,9 +87,11 @@ public class client {
                     if(arrayString[0].equals("T")){
                         controler.setMarcadorServer(arrayString[1]);
                         controler.setNickServer(arrayString[2]);
-
+                        
+                        System.out.println(arrayString);
+                        cliente.interpretaJogada(arrayString);
+                        
                         //Libera o game para começar
-                        cliente.setCharJogo(strJogo);
                         
                         System.out.println("passou por aqui ");  
 
@@ -130,7 +135,7 @@ public class client {
             
     public void setCharJogo(String strJogo) {
         char[] charJogo = strJogo.toCharArray();
-        System.out.println("pika"+getCharJogo());
+        System.out.println(""+charJogo);
     }
     public char[] getCharJogo() {
         return charJogo;
